@@ -1,0 +1,9 @@
+# ignore pycache and ipynb checkpoints
+__pycache__/
+.ipynb_checkpoints/
+.ipynb_checkpoints
+
+# ignore virtual environments
+.virtualenvs
+venv/
+
