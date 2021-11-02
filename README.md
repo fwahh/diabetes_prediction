@@ -3,7 +3,7 @@
 ## Problem Description
 
 ## Folder structure overview
-The folder contains the following:
+This repository contains the following:
 * data folder which holds relevant data set
 * models folder which holds the following: 
   * dictVectorizer
@@ -37,6 +37,33 @@ One can then send a request and get the probability of diabetes from the flask a
 ```python
 python -m predict_test
 ```
+### Examples with Images
+
+In the following examples, \[name of image] is diabetes
+
+Building the image:
+
+![image](https://user-images.githubusercontent.com/65491089/139817724-9eab1b51-e7b8-4682-8368-fff3f89897b0.png)
+
+Running the container
+
+![image](https://user-images.githubusercontent.com/65491089/139817798-914ec8b7-d804-44b1-bf8a-7ebf38de56a0.png)
+
+Note that -d allows the container to run in the background. If you would like to run it interactively, replace -d with -it and you'll see the following. Please note **not** to run this after you have already run the previous command with -d flag. that will cause an error since the port is already allocated and container is running in the background.
+
+![image](https://user-images.githubusercontent.com/65491089/139818006-b50bdd5d-b2d5-4b64-a501-bb8afa275d7e.png)
+
+Testing in a separate CLI
+
+![image](https://user-images.githubusercontent.com/65491089/139818195-854f200a-1cc4-4304-af30-d96f75b5f82c.png)
+
+After you are done testing, to stop the container, run the command "docker ps" to retrieve container ID and then use docker stop to stop it.
+
+![image](https://user-images.githubusercontent.com/65491089/139819322-58c75f48-f128-42d9-a24f-1e029fc55b4b.png)
+
+![image](https://user-images.githubusercontent.com/65491089/139818590-732a51bb-033c-401e-bed3-902dcca98679.png)
+
+If you try to run predict_test.py, you'll received a ConnectionRefusedError due to the flask app not being up and running.
 
 ## How to execute scripts (without Dockers)
 
