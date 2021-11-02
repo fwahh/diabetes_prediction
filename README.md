@@ -2,16 +2,16 @@
 This project is done as a midterm project for [Alexey Grigorev's mlbookcamp course](https://github.com/alexeygrigorev/mlbookcamp-code/tree/master/course-zoomcamp/07-midterm-project)
 
 ### Table of Contents
-[Problem Description](#problem_desc)
-[Repo Structure overview](#repo_overview)
-[Testing Locally](#test_docker)
+* [Problem Description](#problem_desc)
+* [Repo Structure overview](#repo_overview)
+* [Testing Locally](#test_docker)
   * [Executing scripts (with Dockers)](#test_docker)
   * [Executing scripts (without Dockers)](#test_nodocker)
-[Cloud Deployment](#cloud)
+* [Cloud Deployment](#cloud)
   * [Testing the public endpoint](#cloud_test)
   * [Code for cloud deployment](#cloud_deploy)
-[Further Discussion](#further_disc)
-[References](#references)
+* [Further Discussion](#further_disc)
+* [References](#references)
 
 <a id='problem_desc'></a>
 ## Problem Description
