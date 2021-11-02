@@ -100,6 +100,16 @@ python -m train
 
 ## Further Discussion
 
+On the test set, the following scores were achieved. 
+
+| Model        | ROC-AUC score   | Accuracy  |
+| ------------ | --------------- | --------- |
+| Logistic Regression   | 0.979 | 0.923 |
+| Random Forest Classifier | 1.0 | 0.990 |
+| XGBoostClassifier | 1.0 | 1.0|
+
+Honestly, the models all performed well, way out of my expectations. Between the models, it is of no surprise that XGBoost performed the best out of them all. Before placing too much trust in these models, it would be great to get more data from both patients in Sylhet Diabetic Hospital, and from patients worldwide, just to see if the models performed just as well on them. I've checked that there was no data leakage from the test set when exploring the data, or training the models. However, if you spot any issues, do let me know! :)
+
 ## References
 [1] : https://www.who.int/news-room/fact-sheets/detail/diabetes
 
