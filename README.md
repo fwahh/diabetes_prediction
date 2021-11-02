@@ -21,7 +21,8 @@ This repository contains the following:
 * Python scripts
   * train.py, running this script will generate the models. In general, one will not need to use this script except to retrain models with new hyperparameters
   * predict.py, this script deploys a Flask app which accepts post requests with json payload and generates predictions of whether person described in json would have diabetes
-  * predict_test.py, this script is to facilitate testing of predict.py. Json posted to flask app can be edited within.
+  * predict_test.py, this script is to facilitate testing of Flask deployed model on your local machine, with or without Docker. Json posted to flask app can be edited within.
+  * predict_test_cloud.py, this script is to facilitate testing of Flask deployed model on the cloud (https://fwahh-diabetes-prediction.herokuapp.com/predict). Json posted to flask app can be edited within.
 * Dockerfile
 * requirements.txt
 
@@ -43,6 +44,8 @@ One can then send a request and get the probability of diabetes from the flask a
 ```python
 python -m predict_test
 ```
+To test with different values, you could change the dictionary test. Note that age should be an integer value, gender should be any value (Male/Female) and the rest of the variables are either 'Yes' or 'No'.
+
 ### Examples with Images
 
 In the following examples, \[name of image] is diabetes
@@ -97,6 +100,38 @@ To retrain the model(s), you would require the **data folder**, along with **tra
 ```python
 python -m train
 ```
+## Cloud Deployment
+### Testing the public endpoint
+Though the app has been deployed on cloud. Note that https://fwahh-diabetes-prediction.herokuapp.com/predict can't be accessed directly as it only accepts post request. To test, you can directly run predict_test_cloud.py (ensure your CLI is in the folder in which this python script is stored)
+```python
+python -m predict_test_cloud
+```
+If ran correctly, you should see something similar to the following:
+![image](https://user-images.githubusercontent.com/65491089/139905424-e6d1458a-f9e7-45c3-a998-97408cb48767.png)
+
+To test with different values, you could change the dictionary test. Note that age should be an integer value, gender should be any value (Male/Female) and the rest of the variables are either 'Yes' or 'No'.
+
+### Code for deployment
+
+Note you do not have to follow the steps detailed below in order to test. They are mentioned here for reference on how to deploy one's app to the cloud, more specifically Heroku.
+
+First, ensure Heroku CLI is downloaded and heroku is added to path. Thereafter you could navigate to the folder in which the necessary folders and files are stored. Once in the folder, start with a heroku login command, press any key except q to open up the browser. The browser can be closed after logged in screen shows.
+
+```bash
+heroku login
+```
+
+Now you can run the following commands in succession.
+
+```bash
+heroku container:login
+heroku create [name of app]
+heroku container:push web -a [name of app]
+heroku container:release web -a [name of app]
+```
+The above commands logs you in to the Heroku container registry, creates an app with a customized name that will also be the url of your web app, i.e. your app will be hosted on \[name of app]/herokuapp.com. In my case, I called it *fwahh-diabetes-prediction*. The third command pushes the docker image to Hero container registry. The image will be built based on the Dockerfile in the current working directory. The final command releases the image previously built to the web.
+
+Special thanks to Ninad Date's guide on how to deploy apps on heroku. You can check out the guide here: https://github.com/nindate/ml-zoomcamp-exercises/blob/main/how-to-use-heroku.md
 
 ## Further Discussion
 
