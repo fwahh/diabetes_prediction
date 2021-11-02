@@ -1,6 +1,11 @@
 # diabetes_prediction
 
 ## Problem Description
+Diabetes is a chronic disease which could lead to death and cause other issues such as limb amputation. In fact, World Health Organisation estimates that diabetes has direct caused the deaths of 1.5 million people in 2019. [1] It is then no surprise that one would wish to detect diabetes earlier in order to hope to alleviate the illness and other problems that comes along with it.
+
+In this project, the dataset is gotten from https://www.kaggle.com/ishandutta/early-stage-diabetes-risk-prediction-dataset. According to the author, the data was collected via questionnaires from patients of Sylhet Diabetic Hospital located in Sylhet, Bangladesh. The dataset has 16 features (Age, Gender, other conditions such as polyuria, sudden weight loss etc), along with 1 target variable (class), where positive indicates patient has diabetes.
+
+Using the dataset, three classification models were trained: Logistic Regression, Random Forest Classifier and XGBoost Classifier. Using these pretrained models, one could then use it to predict if patient might have diabetes. Prevention is no doubt better than cure but for those who have it detected early, they could do the necessary lifestyle changes and potentially reverse diabetes. [3]
 
 ## Folder structure overview
 This repository contains the following:
@@ -63,7 +68,7 @@ After you are done testing, to stop the container, run the command "docker ps" t
 
 ![image](https://user-images.githubusercontent.com/65491089/139818590-732a51bb-033c-401e-bed3-902dcca98679.png)
 
-If you try to run predict_test.py, you'll received a ConnectionRefusedError due to the flask app not being up and running.
+If you try to run predict_test.py while container is not up, you'll received a ConnectionRefusedError due to the flask app not being up and running.
 
 ## How to execute scripts (without Dockers)
 
@@ -93,3 +98,10 @@ python -m train
 ```
 
 ## Further Discussion
+
+## References
+[1] : https://www.who.int/news-room/fact-sheets/detail/diabetes
+
+[2] : https://www.kaggle.com/ishandutta/early-stage-diabetes-risk-prediction-dataset
+
+[3] : https://www.webmd.com/diabetes/can-you-reverse-type-2-diabetes
