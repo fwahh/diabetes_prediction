@@ -1,6 +1,19 @@
 # diabetes_prediction
 This project is done as a midterm project for [Alexey Grigorev's mlbookcamp course](https://github.com/alexeygrigorev/mlbookcamp-code/tree/master/course-zoomcamp/07-midterm-project)
 
+### Table of Contents
+[Problem Description](#problem_desc)
+[Repo Structure overview](#repo_overview)
+[Testing Locally](#test_docker)
+  * [Executing scripts (with Dockers)](#test_docker)
+  * [Executing scripts (without Dockers)](#test_nodocker)
+[Cloud Deployment](#cloud)
+  * [Testing the public endpoint](#cloud_test)
+  * [Code for cloud deployment](#cloud_deploy)
+[Further Discussion](#further_disc)
+[References](#references)
+
+<a id='problem_desc'></a>
 ## Problem Description
 Diabetes is a chronic disease which could lead to death and cause other issues such as limb amputation. In fact, World Health Organisation estimates that diabetes has direct caused the deaths of 1.5 million people in 2019. [1] It is then no surprise that one would wish to detect diabetes earlier in order to hope to alleviate the illness and other problems that comes along with it.
 
@@ -8,7 +21,8 @@ In this project, the dataset is gotten from https://www.kaggle.com/ishandutta/ea
 
 Using the dataset, three classification models were trained: Logistic Regression, Random Forest Classifier and XGBoost Classifier. Using these pretrained models, one could then use it to predict if patient might have diabetes. Prevention is no doubt better than cure but for those who have it detected early, they could do the necessary lifestyle changes and potentially reverse diabetes. [3]
 
-## Folder structure overview
+<a id='repo_overview'></a>
+## Repository Structure Overview
 This repository contains the following:
 * data folder which holds relevant data set
 * models folder which holds the following: 
@@ -26,6 +40,7 @@ This repository contains the following:
 * Dockerfile
 * requirements.txt
 
+<a id='test_docker'></a>
 ## How to execute scripts (with Docker)
 To start with, you will need to either fork this repository or copy the following folders and files into your directory: **models folder, Dockerfile, requirements.txt, predict.py, predict_test.py**,
 
@@ -74,6 +89,7 @@ After you are done testing, to stop the container, run the command "docker ps" t
 
 If you try to run predict_test.py while container is not up, you'll received a ConnectionRefusedError due to the flask app not being up and running.
 
+<a id='test_nodocker'></a>
 ## How to execute scripts (without Dockers)
 
 ### Predicting diabetes with pre-trained models
@@ -100,7 +116,10 @@ To retrain the model(s), you would require the **data folder**, along with **tra
 ```python
 python -m train
 ```
+
+<a id='cloud'></a>
 ## Cloud Deployment
+<a id='cloud_test'></a>
 ### Testing the public endpoint
 Though the app has been deployed on cloud. Note that https://fwahh-diabetes-prediction.herokuapp.com/predict can't be accessed directly as it only accepts post request. To test, you can directly run predict_test_cloud.py (ensure your CLI is in the folder in which this python script is stored)
 ```python
@@ -111,7 +130,8 @@ If ran correctly, you should see something similar to the following:
 
 To test with different values, you could change the dictionary test. Note that age should be an integer value, gender should be any value (Male/Female) and the rest of the variables are either 'Yes' or 'No'.
 
-### Code for deployment
+<a id='cloud_deploy'></a>
+### Code for cloud deployment
 
 Note you do not have to follow the steps detailed below in order to test. They are mentioned here for reference on how to deploy one's app to the cloud, more specifically Heroku.
 
@@ -133,6 +153,7 @@ The above commands logs you in to the Heroku container registry, creates an app 
 
 Special thanks to Ninad Date's guide on how to deploy apps on heroku. You can check out the guide here: https://github.com/nindate/ml-zoomcamp-exercises/blob/main/how-to-use-heroku.md
 
+<a id='further_disc'></a>
 ## Further Discussion
 
 On the test set, the following scores were achieved. 
@@ -145,6 +166,7 @@ On the test set, the following scores were achieved.
 
 Honestly, the models all performed well, way out of my expectations. Between the models, it is of no surprise that XGBoost performed the best out of them all. Before placing too much trust in these models, it would be great to get more data from both patients in Sylhet Diabetic Hospital, and from patients worldwide, just to see if the models performed just as well on them. I've checked that there was no data leakage from the test set when exploring the data, or training the models. However, if you spot any issues, do let me know! :)
 
+<a id='references'></a>
 ## References
 [1] : https://www.who.int/news-room/fact-sheets/detail/diabetes
 
