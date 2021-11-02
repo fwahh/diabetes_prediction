@@ -1,4 +1,5 @@
 # diabetes_prediction
+This project is done as a midterm project for [Alexey Grigorev's mlbookcamp course](https://github.com/alexeygrigorev/mlbookcamp-code/tree/master/course-zoomcamp/07-midterm-project)
 
 ## Problem Description
 Diabetes is a chronic disease which could lead to death and cause other issues such as limb amputation. In fact, World Health Organisation estimates that diabetes has direct caused the deaths of 1.5 million people in 2019. [1] It is then no surprise that one would wish to detect diabetes earlier in order to hope to alleviate the illness and other problems that comes along with it.
