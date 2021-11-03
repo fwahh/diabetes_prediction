@@ -6,7 +6,7 @@ This project is done as a midterm project for [Alexey Grigorev's mlbookcamp cour
 * [Repo Structure overview](#repo_overview)
 * [Testing Locally](#test_docker)
   * [Executing scripts (with Dockers)](#test_docker)
-  * [Executing scripts (without Dockers)](#test_nodocker)
+  * [Executing scripts (with virtual environment)](#test_nodocker)
 * [Cloud Deployment](#cloud)
   * [Testing the public endpoint](#cloud_test)
   * [Code for cloud deployment](#cloud_deploy)
@@ -90,12 +90,35 @@ After you are done testing, to stop the container, run the command "docker ps" t
 If you try to run predict_test.py while container is not up, you'll received a ConnectionRefusedError due to the flask app not being up and running.
 
 <a id='test_nodocker'></a>
-## How to execute scripts (without Dockers)
+## How to execute scripts (with virtual environment)
 
 ### Predicting diabetes with pre-trained models
-To start with, you will need to either fork this repository or copy the following folders and files into your directory: **models folder, requirements.txt, predict.py, predict_test.py**,
+If you do not have docker, you may want to do your testing in a virtual environment. To start with, you will need to either fork this repository or copy the following folders and files into your directory: **models folder, requirements.txt, predict.py, predict_test.py**. Next ensure virtualenv is installed by running the following. If it's not installed, you can do a pip install for the module virtualenv.
 
-Within the folder in which the files are held, run the following to ensure the requirements are fulfilled:
+```bash
+virtualenv --version
+```
+
+Within the folder in which the files are held, create your virtual environment as follows:
+
+```bash
+python -m venv [name of env]
+```
+
+Once venv is created you can activate with the following:
+
+```bash
+# if windows:
+[name of env]\Scripts\activate
+
+# for non-windows:
+[name of env]/bin/activate
+```
+If ran correctly, you should see the venv's name in parentheses in front of your CLI prompt, similar to the image below In the following image. Note that in this image, my virtual env is called diabetes and I'm on Windows.
+
+![image](https://user-images.githubusercontent.com/65491089/140039797-d8ac1bd4-00a5-45c8-b6ab-3d097eadf1cc.png)
+
+Within the virtual env, run the following to ensure the requirements are fulfilled:
 
 ```bash
 pip install -r requirements.txt
@@ -111,8 +134,15 @@ One can then send a request and get the probability of diabetes from the flask a
 python -m predict_test
 ```
 
+Once done with testing, you can simply deactivate the virtual environment as follows:
+```bash
+deactivate
+```
+
+You will know it has been deactivated if the name of the venv disappears from your command prompt. Directly closing the command line interface is fine too.
+
 ### Re-training models
-To retrain the model(s), you would require the **data folder**, along with **train.py** script. You could tinker with the parameters within train.py and then run the following in your command line in the folder in which both are stored:
+To retrain the model(s), you would require the **data folder**, along with **train.py** script. You could tinker with the parameters within train.py and then run the following in your command line in the folder in which both are stored. It would be best to do this within the virtual environment from above to ensure all dependencies are installed:
 ```python
 python -m train
 ```
