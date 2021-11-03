@@ -101,20 +101,20 @@ If you do not have docker, you may want to do your testing in a virtual environm
 virtualenv --version
 ```
 
-Within the folder in which the files are held, create your virtual environment as follows:
+Within the folder in which the files are held, create your virtual environment diabetes (you can rename your virtualenv by replacing diabetes with something else) as follows:
 
 ```bash
-python -m venv [name of env]
+python -m venv diabetes
 ```
 
 Once venv is created you can activate with 1 of the following commands, depending on your operating system:
 
 ```bash
 # if windows:
-[name of env]\Scripts\activate
+diabetes\Scripts\activate
 
 # for non-windows:
-[name of env]/bin/activate
+diabetes/bin/activate
 ```
 If done correctly, you should see the venv's name in parentheses in front of your CLI prompt, similar to the image below. Note that in this image, my virtual env is called diabetes and I'm on Windows.
 
