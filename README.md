@@ -42,7 +42,9 @@ This repository contains the following:
 
 <a id='test_docker'></a>
 ## How to execute scripts (with Docker)
-To start with, you will need to either fork this repository or copy the following folders and files into your directory: **models folder, Dockerfile, requirements.txt, predict.py, predict_test.py**,
+To start with, you will need to either fork this repository or copy the following folders and files into your directory: **models folder, Dockerfile, requirements.txt, predict.py, predict_test.py**.
+
+**Please ensure your Docker desktop is up and running before attempting the below**
 
 To build the image based off dockerfile, within the folder in which dockerfile is held, run the following:
 
@@ -56,7 +58,7 @@ docker run -d --rm -p 9696:9696 [name of image]
 ```
 
 One can then send a request and get the probability of diabetes from the flask app by running the relevant python script via **another** command line interface after changing to a directory which holds the predict_test.py script
-```python
+```bash
 python -m predict_test
 ```
 To test with different values, you could change the dictionary test. Note that age should be an integer value, gender should be any value (Male/Female) and the rest of the variables are either 'Yes' or 'No'.
@@ -69,19 +71,19 @@ Building the image:
 
 ![image](https://user-images.githubusercontent.com/65491089/139817724-9eab1b51-e7b8-4682-8368-fff3f89897b0.png)
 
-Running the container
+Running the container:
 
 ![image](https://user-images.githubusercontent.com/65491089/139817798-914ec8b7-d804-44b1-bf8a-7ebf38de56a0.png)
 
-Note that -d allows the container to run in the background. If you would like to run it interactively, replace -d with -it and you'll see the following. Please note **not** to run this after you have already run the previous command with -d flag. that will cause an error since the port is already allocated and container is running in the background.
+Note that `-d` allows the container to run in the background. If you would like to run it interactively, replace `-d` with `-it` and you'll see the following. Please note **not** to run this after you have already run the previous command with `-d` flag. that will cause an error since the port is already allocated and container is running in the background.
 
 ![image](https://user-images.githubusercontent.com/65491089/139818006-b50bdd5d-b2d5-4b64-a501-bb8afa275d7e.png)
 
-Testing in a separate CLI
+Testing in a separate CLI:
 
 ![image](https://user-images.githubusercontent.com/65491089/139818195-854f200a-1cc4-4304-af30-d96f75b5f82c.png)
 
-After you are done testing, to stop the container, run the command "docker ps" to retrieve container ID and then use docker stop to stop it.
+After you are done testing, to stop the container, run the command `docker ps` to retrieve container ID and then use `docker stop` to stop it.
 
 ![image](https://user-images.githubusercontent.com/65491089/139819322-58c75f48-f128-42d9-a24f-1e029fc55b4b.png)
 
@@ -105,7 +107,7 @@ Within the folder in which the files are held, create your virtual environment a
 python -m venv [name of env]
 ```
 
-Once venv is created you can activate with the following:
+Once venv is created you can activate with 1 of the following commands, depending on your operating system:
 
 ```bash
 # if windows:
@@ -114,7 +116,7 @@ Once venv is created you can activate with the following:
 # for non-windows:
 [name of env]/bin/activate
 ```
-If ran correctly, you should see the venv's name in parentheses in front of your CLI prompt, similar to the image below In the following image. Note that in this image, my virtual env is called diabetes and I'm on Windows.
+If done correctly, you should see the venv's name in parentheses in front of your CLI prompt, similar to the image below. Note that in this image, my virtual env is called diabetes and I'm on Windows.
 
 ![image](https://user-images.githubusercontent.com/65491089/140039797-d8ac1bd4-00a5-45c8-b6ab-3d097eadf1cc.png)
 
@@ -125,21 +127,16 @@ pip install -r requirements.txt
 ```
 
 Get the flask app up and running:
-```python
+```bash
 python -m predict
 ```
 
 One can then send a request and get the probability of diabetes from the flask app by running the relevant python script via **another** command line interface after changing to a directory which holds the predict_test.py script
-```python
+```bash
 python -m predict_test
 ```
 
-Once done with testing, you can simply deactivate the virtual environment as follows:
-```bash
-deactivate
-```
-
-You will know it has been deactivated if the name of the venv disappears from your command prompt. Directly closing the command line interface is fine too.
+Once done with testing, you can simply deactivate the virtual environment by typing `deactivate` in CLI. You will know it has been deactivated if the name of the venv disappears from your command prompt. Directly closing the command line interface is fine too.
 
 ### Re-training models
 To retrain the model(s), you would require the **data folder**, along with **train.py** script. You could tinker with the parameters within train.py and then run the following in your command line in the folder in which both are stored. It would be best to do this within the virtual environment from above to ensure all dependencies are installed:
@@ -152,7 +149,7 @@ python -m train
 <a id='cloud_test'></a>
 ### Testing the public endpoint
 Though the app has been deployed on cloud. Note that https://fwahh-diabetes-prediction.herokuapp.com/predict can't be accessed directly as it only accepts post request. To test, you can directly run predict_test_cloud.py (ensure your CLI is in the folder in which this python script is stored)
-```python
+```bash
 python -m predict_test_cloud
 ```
 If ran correctly, you should see something similar to the following:
