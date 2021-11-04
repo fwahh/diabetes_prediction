@@ -17,7 +17,7 @@ This project is done as a midterm project for [Alexey Grigorev's mlbookcamp cour
 ## Problem Description
 Diabetes is a chronic disease which could lead to death and cause other issues such as limb amputation. In fact, World Health Organisation estimates that diabetes has direct caused the deaths of 1.5 million people in 2019. [1] It is then no surprise that one would wish to detect diabetes earlier in order to hope to alleviate the illness and other problems that comes along with it.
 
-In this project, the dataset is gotten from https://www.kaggle.com/ishandutta/early-stage-diabetes-risk-prediction-dataset. According to the author, the data was collected via questionnaires from patients of Sylhet Diabetic Hospital located in Sylhet, Bangladesh. The dataset has 16 features (Age, Gender, other conditions such as polyuria, sudden weight loss etc), along with 1 target variable (class), where positive indicates patient has diabetes.
+In this project, the dataset is gotten from https://www.kaggle.com/ishandutta/early-stage-diabetes-risk-prediction-dataset. According to the author, the data was collected via questionnaires from patients of Sylhet Diabetic Hospital located in Sylhet, Bangladesh. The dataset has 16 features: Age (integer variable), Gender (Categorical: Male / Female), 14 other conditions (all 14 are Categorical: Yes / No) such as polyuria, sudden weight loss etc, along with 1 target variable class (Categorical: Positive/Negative), where Positive indicates patient has diabetes.
 
 Using the dataset, three classification models were trained: Logistic Regression, Random Forest Classifier and XGBoost Classifier. Using these pretrained models, one could then use it to predict if patient might have diabetes. Prevention is no doubt better than cure but for those who have it detected early, they could do the necessary lifestyle changes and potentially reverse diabetes. [3]
 
@@ -114,7 +114,7 @@ Once venv is created you can activate with 1 of the following commands, dependin
 diabetes\Scripts\activate
 
 # for non-windows:
-diabetes/bin/activate
+source diabetes/bin/activate
 ```
 If done correctly, you should see the venv's name in parentheses in front of your CLI prompt, similar to the image below. Note that in this image, my virtual env is called diabetes and I'm on Windows.
 
